@@ -1,0 +1,11 @@
+{
+  "hosting": {
+    "site": "dish-by-dish",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

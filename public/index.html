@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title>Dish by Dish</title>
+  </head>
+  <body>
+    <div id="protected-content" style="display: none;">
+      <h2>Home Page</h2>
+      <p>Welcome to Dish by Dish!</p>
+    </div>
+    <h1 id="welcome-message">Loading...</h1>
+    <button id="login" >Log in with Google</button>
+    <button id="logout">Log out</button>
+
+    <script type="module">
+      // Import Firebase modules
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
+      import { getAuth, onAuthStateChanged, signInWithPopup, GoogleAuthProvider, signOut } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
+
+      // Firebase configuration
+      //pls don't steal my stuff lol, this is for my family
+      const firebaseConfig = {
+        apiKey: "AIzaSyDa1u0As2NIJyxjLFmPYjaTw5Bs21KJ2kQ",
+        authDomain: "dish-by-dish.firebaseapp.com",
+        projectId: "dish-by-dish",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth(app);
+      const provider = new GoogleAuthProvider();
+
+      // Handle authentication state changes
+      onAuthStateChanged(auth, (user) => {
+        const welcomeMessage = document.getElementById("welcome-message");
+        const loginButton = document.getElementById("login");
+        const logoutButton = document.getElementById("logout");
+
+        if (user) {
+          // User is signed in
+          welcomeMessage.textContent = `Welcome, ${user.displayName}!`;
+          loginButton.style.display = "none";
+          logoutButton.style.display = "inline";
+        } else {
+          // User is not signed in
+          welcomeMessage.textContent = "Please log in to access the site.";
+          loginButton.style.display = "inline";
+          logoutButton.style.display = "none";
+        }
+      });
+
+      // Log in
+      document.getElementById("login").addEventListener("click", () => {
+        signInWithPopup(auth, provider).catch((error) => {
+          console.error("Login failed:", error);
+        });
+      });
+
+      // Log out
+      document.getElementById("logout").addEventListener("click", () => {
+        signOut(auth).catch((error) => {
+          console.error("Logout failed:", error);
+        });
+      });
+
+      onAuthStateChanged(auth, (user) => {
+      const protectedContent = document.getElementById("protected-content");
+      if (user) {
+        protectedContent.style.display = "block";
+      } else {
+        protectedContent.style.display = "none";
+      }
+    });
+    </script>
+  </body>
+</html>

@@ -10,6 +10,7 @@ A modern web browser (Chrome, Firefox, etc.)
 git clone https://github.com/your-username/dish-by-dish.git  
 cd dish-by-dish  
 npm install  
+npm install mongodb
 
 ### Setting up the .env file  
 In the project root, create a file called .env with the following contents:  
@@ -17,6 +18,7 @@ In the project root, create a file called .env with the following contents:
 GOOGLE_CLIENT_ID=your_google_client_id  
 GOOGLE_CLIENT_SECRET=your_google_client_secret  
 MONGO_URI=your_mongo_atlas_connection_string  
+
 Ask Mary for the correct values if you don’t have them.  
 MongoDB and Google Cloud - i created a project with the same login information that I gave you both  
 

@@ -1,0 +1,52 @@
+/* colors
+    nav bar: #2c6943
+    background: #faf9da
+    recipe card: #4b8d4f
+    recipe card border:
+    hover: 
+*/
+
+/* keep this or it messes up the nav bar...pls and thank you */
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    background: #faf9da
+}
+
+
+.topnav {
+    background: #2c6943;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    height: 15%;
+}
+
+#menulist {
+    float: right;
+    margin:0;
+    padding:0;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color:#faf9da;
+}
+
+li a:hover {
+  background-color: #111;
+}

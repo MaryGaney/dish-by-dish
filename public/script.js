@@ -4,15 +4,13 @@ window.addEventListener('DOMContentLoaded', async () => {
   try {
     const response = await fetch('/api/recipes');
     const recipes = await response.json();
-    console.log(recipes);
 
     recipes.forEach(recipe => {
       const div = document.createElement('div');
+      const slug = recipe.slug || recipe.title.toLowerCase().replace(/\s+/g, '-');
       div.innerHTML = `
-        <h3>${recipe.title || 'Untitled Recipe'}</h3>
-        <p>Ingredients: ${Array.isArray(recipe.ingredient) ? recipe.ingredient.join(', ') : 'No ingredients listed'}</p>
-        ${recipe.quantity ? `<p>Quantity: ${recipe.quantity}</p>` : ''}
-        ${recipe.type ? `<p>Type: ${recipe.type}</p>` : ''}
+        <h3><a href="/recipe?slug=${slug}">${recipe.title || 'Untitled Recipe'}</a></h3>
+        <p>${recipe.description || 'No description available.'}</p>
         <hr>
       `;
       container.appendChild(div);

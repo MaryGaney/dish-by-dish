@@ -9,13 +9,33 @@
     <body>
 
         <ul class="topnav">
-            <li><a href="#ingredient-sort">Sort by Ingredient</a></li>
-            <li><a href="#request">Request a Recipe</a></li>
-            <li><a href="#myrecipes">My Recipes</a></li>
-            <li id="menulist"><a href="#"><i class="bi bi-list"></i></a></li>
+            <h1 id="bigName">Dish by Dish</h1>
+            <div class="normal_links">
+                <li ><a href="#ingredient-sort">Sort by Ingredient</a></li>
+                <li><a href="#request">Request a Recipe</a></li>
+                <li><a href="#myrecipes">My Recipes</a></li>
+            </div>
+            <li id="menulist"><a href="#"><i class="bi bi-list"></i></a>
+                <div class="menulist-content">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div>
+            </li>
         </ul>
 
         <div id="content">
+            <div id="modal">
+                <div id="modal-content">
+                    <span id="close-modal">&times;</span>
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-description"></p>
+                    <h4>Ingredients:</h4>
+                    <ul id="modal-ingredients"></ul>
+                    <button id="go-to-recipe">Go to this recipe</button>
+                </div>
+                </div>
+
             <h1>Recipe List</h1>
             <div id="recipe-container"></div>
 

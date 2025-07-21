@@ -1,6 +1,6 @@
 /* colors
     nav bar: #2c6943
-    background: #faf9da
+    background: #fefef0;
     recipe card: #4b8d4f
     recipe card border:
     hover: 
@@ -13,7 +13,21 @@
 }
 
 body{
-    background: #faf9da
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #fefef0;
+    color:#0a1f12;
+}
+
+body h1{
+  text-align:center;
+}
+
+#bigName {
+    color: #fefef0;
+    font-size: 2.5em;
+    margin-left: 1rem;
+    font-family:serif; 
+    /*replace font later*/
 }
 
 
@@ -21,22 +35,62 @@ body{
     background: #2c6943;
     list-style-type: none;
     margin: 0;
-    padding: 0;
-    overflow: hidden;
+    padding: 0.5rem;
+    overflow: none;
     position: sticky;
+     display: flex;
+    align-items: center;
+    justify-content: space-between;
     top: 0;
     width: 100%;
     height: 15%;
 }
 
 #menulist {
-    float: right;
-    margin:0;
-    padding:0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.menulist-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Style the links inside the dropdown */
+.menulist-content a {
+  float: none;
+  color: black;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background to dropdown links on hover */
+.menulist-content a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Show the dropdown menu when the user moves the mouse over the dropdown button */
+#menulist:hover .menulist-content {
+  display: block;
+}
+
+.normal_links{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
 }
 
 li {
-  float: left;
+  list-style: none;
 }
 
 li a {
@@ -44,9 +98,73 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  color:#faf9da;
+  color:#fefef0;;
 }
 
 li a:hover {
-  background-color: #111;
+  background-color: #4b8d4f;
+}
+
+#recipe-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.recipe_box {
+  background-color: #4b8d4f;
+  border: 2px solid #2c6943;
+  color: #fefef0;
+  padding: 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.recipe_box:hover {
+  transform: scale(1.02);
+}
+
+/* Modal styling */
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-content {
+  background: #fefef0;
+  color: #0a1f12;
+  padding: 2rem;
+  max-width: 37.5rem;
+  width: 90%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000;
+}
+
+#modal-content h2 {
+  margin-top: 0;
+}
+
+#close-modal {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #2c6943;
+}
+
+#go-to-recipe {
+  background-color: #4b8d4f;
+  border: none;
+  color: #fefef0;
+  padding: 0.75rem 1.5rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
 }

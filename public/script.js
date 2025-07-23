@@ -6,12 +6,23 @@ window.addEventListener('DOMContentLoaded', async () => {
   const modalDesc = document.getElementById('modal-description');
   const modalIngredients = document.getElementById('modal-ingredients');
   const goToBtn = document.getElementById('go-to-recipe');
+  const settingsPopUp = document.getElementById('settings-pop-up');
+  const closeSettings = document.getElementById('close-settings');
+  const settingsLink = document.getElementById('settings-link');
+
 
   let currentSlug = '';
 
   try {
     const response = await fetch('/api/recipes');
     const recipes = await response.json();
+
+    settingsLink.addEventListener('click', (e) => {
+      settingsPopUp.style.display = 'block';
+    });
+    closeSettings.addEventListener('click', () => {
+      settingsPopUp.style.display = 'none';
+    });
 
     recipes.forEach(recipe => {
       const div = document.createElement('div');
